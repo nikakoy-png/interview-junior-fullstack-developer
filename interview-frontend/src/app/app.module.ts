@@ -6,13 +6,11 @@ import { AppComponent } from './app.component';
 import { CitiesComponent } from './cities/cities.component';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
-import { ErrorModalComponent } from './error-modal/error-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CitiesComponent,
-    ErrorModalComponent
   ],
   imports: [
     BrowserModule,
