@@ -1,24 +1,38 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { AppController } from '../src/app.controller';
+import { AppService } from '../src/app.service';
+import { INestApplication, HttpStatus } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      controllers: [AppController],
+      providers: [AppService],
     }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  afterAll(async () => {
+    await app.close();
+  });
+
+  it('/cities (GET) should return 200 HTTP CODE', async () => {
+    const response = await request(app.getHttpServer()).get(
+      '/cities?query=B&page=1',
+    );
+
+    expect(response.status).toBe(HttpStatus.OK);
+  });
+  it('/cities (GET) should return 400 HTTP CODE', async () => {
+    const response = await request(app.getHttpServer()).get(
+      '/cities?query=B&page=-1',
+    );
+
+    expect(response.status).toBe(HttpStatus.BAD_REQUEST);
   });
 });
