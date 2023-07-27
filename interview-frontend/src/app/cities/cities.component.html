@@ -1,0 +1,16 @@
+<div class="app-container">
+  <div class="app-header">
+    <h1>Cities App</h1>
+  </div>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="query" (ngModelChange)="loadCities()" placeholder="Search cities...">
+  </div>
+  <ul class="cities-list">
+    <li *ngFor="let city of cities">
+      <span class="city-name">{{ city.cityName }}</span> - count: {{ city.count }}
+    </li>
+  </ul>
+  <div class="pagination" *ngIf="totalPages.length > 1">
+    <span *ngFor="let page of totalPages" (click)="onPageChange(page)">{{ page }}</span>
+  </div>
+</div>
