@@ -2,8 +2,9 @@
   <div class="app-header">
     <h1>Cities App</h1>
   </div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
   <div class="search-bar">
-    <input type="text" [(ngModel)]="query" (ngModelChange)="loadCities()" placeholder="Search cities...">
+    <input type="text" [(ngModel)]="query" (ngModelChange)="loadCities()" placeholder="Just start typing in the title...">
   </div>
   <ul class="cities-list">
     <li *ngFor="let city of cities">

@@ -19,12 +19,21 @@ export class CitiesComponent implements OnInit {
     this.loadCities();
   }
 
+  error: string = '';
+
   loadCities(): void {
     this.citiesService.getCities(this.query, this.page)
-      .subscribe(({ data, totalPages }) => {
-        this.cities = data;
-        this.totalPages = Array.from({ length: totalPages }, (_, i) => i + 1);
-      });
+      .subscribe(
+        ({ data, totalPages }) => {
+          this.cities = data;
+          this.totalPages = Array.from({ length: totalPages }, (_, i) => i + 1);
+          this.error = '';
+        },
+        (error) => {
+          console.error('Error loading cities:', error);
+          this.error = error.error.message || 'Failed to load cities. Please try again later.';
+        }
+      );
   }
 
   onPageChange(page: number): void {
