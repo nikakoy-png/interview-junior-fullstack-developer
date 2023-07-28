@@ -28,6 +28,7 @@ export class CitiesComponent implements OnInit {
           this.cities = data;
           this.totalPages = Array.from({ length: totalPages }, (_, i) => i + 1);
           this.error = '';
+          this.page = 1;
         },
         (error) => {
           console.error('Error loading cities:', error);
