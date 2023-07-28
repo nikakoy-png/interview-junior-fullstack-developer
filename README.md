@@ -1,5 +1,9 @@
-# Interview for Junior Full-Stack developer
+<h1 align="center">Hello, Erento</a> 
+<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
+<h3 align="center">Thanks for the cool challenge, I look forward to your feedback💌</h3>
 
+
+# Interview for Junior Full-Stack developer
 Dear applicant,
 
 thank you again for applying for the Junior Full-Stack developer position at Erento. With the following task we would like to verify your coding skills. Expected timeline for this assignment is to be finished within a week.
